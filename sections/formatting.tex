@@ -11,14 +11,12 @@
 \section{Formattazione}\label{sec:formatting}
 
 In questa sezione verranno illustrate le principali regole di formattazione che dovranno essere seguite per la stesura del codice.
-Ovviamente la guida non è esaustiva e non copre tutti i particolari casi.
-In caso di dubbi è bene affidarsi al buon senso basandosi sulle regole che verranno illustrate e solo nel caso nemmeno questo basti si possono chiedere chiarimenti al responsabile dell'\textbf{OHILab\#Dev} Team.
 
 La prima regola fondamentale da tenere in mente e che viene riportata da quasi tutte le guide di coding style\cite{codestyle:google,codestyle:geotechnical,codestyle:quantum} è che ogni riga di codice \emph{non} deve superare le 80 colonne.
 
 \subsection{Spazi e tabulazioni}
 
-Per indentare il codice è permesso il solo uso degli spazi, in particolare l'indentazione è di due spazi.
+Per indentare il codice è permesso il solo uso degli spazi, in particolare l'indentazione è di \emph{quattro} spazi.
 L'uso del carattere di tabulazione è assolutamente vietato.
 Il motivo di tale scelta risiede nel fatto che si vuole evitare problemi di codifica tra diversi IDE e diversi sistemi operativi.
 Inoltre gli spazi non hanno interpretazioni diverse, in temini di spazio occupato, in base alle impostazioni dell'IDE, cosa che invece succede per la tabulazione.
@@ -47,7 +45,7 @@ functionName (Type1 argument1, Type2 argument2)
 \end{RightCode}
 \end{minipage}%
 
-Nel caso in cui gli argomenti della funzione siano piuttosto numerosi, suddividerli su più righe, ma mantenendo il limite del numero di colonne.
+Nel caso in cui gli argomenti della funzione siano piuttosto numerosi, i parametri possono essere suddivisi su più righe, mantenendo comunque valido il limite del numero di colonne.
 Quando parte dei parametri vengono messi su di una nuova linea e bene che siano allineati con quelli della riga sopra.
 
 \begin{minipage}[t]{\rbwidth}
@@ -133,7 +131,7 @@ else doThat();
 \end{minipage}
 
 Nel caso di istruzioni condizionali formate da una singola riga, non è necessario inserire le parentesi graffe.
-Nel caso in cui una parte del costrutto \texttt{if-else} le usi, allora anche l'altro deve utilizzarle.
+Nel caso in cui una parte del costrutto \texttt{if-else} le usi, allora anche l'altro deve utilizzarle, anche se solo per una riga.
 
 \begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
@@ -204,13 +202,13 @@ Il costrutto \texttt{switch} dovrebbe sempre prevedere il caso \texttt{default}.
 switch (var)
 {
 case 0:   // 0 space indent
-  ...     // 2 space indent
-  break;
+    ...   // 4 space indent
+    break;
 case 1:
-  ...
-  break;
+    ...
+    break;
 default:
-  ...
+    ...
 }
 \end{RightCode}
 \end{minipage}%
