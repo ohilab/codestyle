@@ -1,0 +1,424 @@
+% OHILab C/C++ Coding Style
+% (C) 2012 - OHILab <info@ohilab.org>
+%
+% Author: 
+%	Marco Giammarini <m.giammarini@warcomeb.it>
+%	Vito Colagiacomo <vito.colagiacomo@gmail.com>
+%
+% svn:
+%	$Id: name.tex 139 2012-12-03 08:05:19Z warcomeb $
+
+\section{Nomi}\label{sec:name}
+
+I nomi di variabili, funzioni, tipi di dato, file, etc. devono essere \emph{sempre} scelti in modo da fornire anche un'informazione riguardo il loro significato.
+È cattiva norma comune, infatti, usare abbreviazioni e codici strani per i nomi, con conseguente illeggibilità del codice da parte di altri sviluppatori e spesso anche dallo sviluppatore che lo ha scritto.
+Per le variabili locali invece può essere scelto un nome più corto, poiché il loro utilizzo è limitato all'interno del loro \emph{scope}, dove in genere un commento descrive il loro utilizzo, ad ogni modo è bene cercare di limitare il numero di abbreviazioni. 
+
+La nomenclatura di tutti gli elementi all'interno del codice deve seguire la notazione \emph{Camel Case}\cite{codestyle:camel} con le varianti che verranno mostrate nei prossimi paragrafi.
+
+La lingua adottata è l'inglese.
+
+\subsection{Abbreviazioni ed acronimi}\label{ssec:abbreviations}
+
+Come già detto in precedenza, è bene evitare di utilizzare nomi ambigui ed abbreviazioni di difficile comprensione:
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+int numElements;
+int errorCount;
+bool isSelected;
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+int nElements;
+int eCnt;
+bool sel;
+\end{ErrorCode}
+\end{minipage}
+
+Acronimi e abbreviazioni di uso comune devono essere usati ma non possono essere indicati interamente in maiuscolo, mentre non devono assolutamente essere usate le forme complete degli acronimi:
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+getJsonResponse();
+setPwmDutyCicle();
+getHtml();
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+getJSONResponse();
+setPWMDutyCicle();
+getHypertextMarkupLanguage();
+\end{ErrorCode}
+\end{minipage}
+
+Inoltre, generalmente è pratica comune utilizzare la stessa variabile locale (con nomi tipo \texttt{tmp}) per scopi differenti all'interno della stessa funzione.
+Anziché fare ciò, è meglio utilizzare variabili locali differenti per ogni scopo assegnadogli nomi significativi.
+Questo aiuta a comprendere meglio il programma, lasciando al compilatore il compito di ottimizzare il codice.
+Se poi si cerca di posizionare la dichiarazione della varibile locale all'interno dello \emph{scope} più piccolo che comprende il suo utilizzo rende il codice ulteriormente più chiaro.
+
+\subsection{File}\label{ssec:filename}
+
+Per nomi dei file del progetto che contengono codice C/C++ è \emph{strettamente necessario} attenersi alle seguenti regole:
+\begin{itemize}
+	\item I nomi dei file devono essere scritti tutti in minuscolo e non possono contenere caratteri come lo spazio, l'underscore e il trattino.
+	\item I file header del progetto devono avere estensione \texttt{.h}.
+	\item I file sorgente del progetto devono avere estensione \texttt{.c} nel caso di codice C, \texttt{.cpp} nel caso di codice C++.
+	\item È bene che i nomi dei file siano, come per ogni nome all'interno del progetto, il più chiaro e specifico possibile.
+		Ad esempio non chiamare un file \texttt{logs.h} se questo gestisce il log di una specifica parte del progetto.
+	\item Se il file contiene la dichiarazione o la definizione di una sola struttura di dati o classe, il suo nome deve essere uguale al nome della struttura ivi contenuta.
+		Ad esempio se il file \texttt{.h} contiene la definizione della sola classe \texttt{PippoStar}, questo dovrà essere nominato \texttt{pippostar.h}, ed il relativo file contenente l'implementazione della classe \texttt{pippostar.cpp}. 
+\end{itemize}
+
+\subsection{Tipi di dato}\label{ssec:typename}
+
+I nomi dei tipi di dato (classi, strutture, typedef ed enum) devono iniziare con la prima lettera maiuscola, ed hanno una lettera maiuscola per ogni nuova parola\cite{codestyle:camel}.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+class SerialBus { ... };
+enum SerialResponse { ... };
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+class serialbus { ... };
+enum Serial_Response { ... };
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Variabili}\label{ssec:variable}
+
+\subsubsection{Variabili ordinarie e membro di strutture}\label{sssec:varnorm}
+
+Per distinguere il nome delle variabili da quello dei tipi di dato, nelle variabili la prima lettera deve essere minuscola.
+Anche in questo caso il carattere underscore non deve essere mai utilizzato per separare le parole.
+Inoltre, è buona norma utilizzare forme plurali nei nomi di variabili che rappresentano collezioni di oggetti.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+int numElements;
+int errorsCount;
+int values[];
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+int num_elements;
+int ErrorsCount;
+int value[];
+\end{ErrorCode}
+\end{minipage}
+
+\subsubsection{Variabili membro di classi}
+
+I nomi delle variabili membro di una classe seguono la stessa convenzione definita per le variabili ordinarie, anteponendo però al nome della variabile il carattere \emph{m}.
+Questo per differenziare, all'interno delle funzioni membro della classe, la gestione della variabile membro con quelle passate come parametro alla funzione stessa.
+%È vietato anteporre l'underscore al nome della variabile poiché é una convenzione spesso usata per nomi di parole chiave (i.e.: \texttt{\_\_declspec}).  
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+string mName;
+int mBirthdayYear;
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+string name_;
+int _birthdayYear;
+\end{ErrorCode}
+\end{minipage}
+
+\subsubsection{Variabili globali}
+
+Per quanto riguarda le variabili globali queste seguono le stesse regole delle variabili ordinarie (paragrafo~\ref{sssec:varnorm}).
+È buona norma inoltre riferirsi a queste variabili usando l'operatore di scope globale <<::>>\cite{codestyle:geotechnical}.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+int a = ::myGlobalVariable;
+\end{RightCode}
+\end{minipage}
+
+\subsubsection{Variabili contatore}
+
+I nomi delle variabili contatore da utilizzare nei cicli, se il loro scope è molto limitato, dovrebbero essere preferibilmente \texttt{i}, \texttt{j}, \texttt{k}, \texttt{m}, \texttt{n}, altrimenti, se lo scope non è limitato, è bene usare un nome più esplicativo.
+
+\subsection{Funzioni}\label{ssec:functionname}
+
+Come per le variabili, anche le funzioni devono seguire la notazione \emph{Camel Case}, iniziando con la lettera minuscola\cite{codestyle:geotechnical}.
+È buona norma che il nome di una funzione rappresenti un'azione e che quindi contenga il \emph{verbo} che la descrive.
+Anche per il nome delle funzioni non è consentito l'uso dell'underscore.    
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+addTableEntry()
+deleteUrl()
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+AddTableEntry()
+delete_url()
+\end{ErrorCode}
+\end{minipage}
+
+I nomi delle funzioni utilizzate per accedere e modificare direttamente variabili membro di una classe devono iniziare rispettivamente con \texttt{get} e \texttt{set}, seguiti dal nome della variabile.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+employee.getName();
+employee.setName(name);
+\end{RightCode}
+\end{minipage}%
+
+Una regola da ricordare nel dare nomi alle funzioni è che il nome dell'oggetto è implicito e quindi non deve essere ripetuto all'interno del nome della funzione.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+line.getLength();
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+line.getLineLength();
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Namespace}\label{ssec:namespacename}
+
+I nomi dei namespace devono essere composti solo da lettere minuscole e senza underscore tra le parole\cite{codestyle:geotechnical}.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+device::serialport
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+device::serial_port
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Costanti}\label{ssec:constantname}
+
+I nomi delle costanti, contrariamente alle altre variabili, devono essere scritte interamente con lettere maiuscole e con le parole separate da un underscore\cite{codestyle:geotechnical}.
+Questa regola è valida anche per i valori degli \texttt{enum}.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+const int MAX_DIMENSION = 10;
+const int NUM_ITERATIONS = 2;
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+const int maxDimension = 10;
+const int NUMITERATIONS = 2;
+\end{ErrorCode}
+\end{minipage}
+
+Per aumentare la coerenza e la leggibilità del codice, potrebbe essere considerata una buona norma la definizione di una funzione al posto di una costante\cite{codestyle:geotechnical}.
+Questa soluzione \emph{non} deve essere usata in ambito embedded.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+int
+getNumIterations ()
+{
+	return 2;
+}
+\end{RightCode}
+\end{minipage}
+
+\subsection{Enumerators}\label{ssec:enumname}
+
+I valori degli \texttt{enum}, come già detto, seguono le regole delle costanti.
+Volendo, nell'ottica di aumentare la leggibilità del codice, è possibile aggiungere come prefisso ai nomi dei valori il nome del tipo:
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+enum Color
+{
+	COLOR_RED = 1,
+	COLOR_GREEN,
+	COLOR_BLUE
+};
+\end{RightCode}
+\end{minipage}
+
+\subsection{Macro}\label{ssec:macroname}
+
+Le macro seguono le stesse regole indicate precedentemente per le variabili costanti e gli enumerators.
+
+\subsection{Template}\label{ssec:templatename}
+
+I nomi rappresentanti template devono essere composti da una sola lettera maiuscola.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+template<class T> ...
+template<class C, class D> ...
+\end{RightCode}
+\end{minipage}
+
+\subsection{Termini, prefissi e suffissi}\label{ssec:prefixsuffix}
+
+In questo paragrafo verranno riportati alcuni consigli e regole tratti da \cite{codestyle:geotechnical} sull'utilizzo di alcuni termini, suffissi e prefissi.
+Si consiglia di seguire molto attentamente quanto riportato.% ed in particolari le regole con l'item rosso.
+
+Il prefisso \emph{is} deve essere usato come prefisso per le variabili boolean, mentre non è consentito negare il nome della variabile.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+bool isValid;
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+bool isNoValid;
+\end{ErrorCode}
+\end{minipage}
+
+Allo stesso modo le funzioni che ritornano variabili boolean dovrebbero avere questo prefisso.
+Altre alternative sono i prefissi \emph{can}, \emph{has} e \emph{should}.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+bool hasLicense ();
+bool isUpdated ();
+\end{RightCode}
+\end{minipage}
+
+Una buona norma per ridurre la complessità e diminuire il numero di nomi delle variabili consiste nel dare a variabili generiche lo stesso nome del tipo di dato.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+setTopic (Topic* topic);
+connect (Database* database);
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+setTopic (Topic* value);
+connect (Database* db);
+\end{ErrorCode}
+\end{minipage}
+
+Variabili che invece hanno un ruolo e che quindi non sono generiche devono avere nomi significativi.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+Point startingPoint, centerPoint;
+Name loginName;
+\end{RightCode}
+\end{minipage}%
+
+
+Il prefisso \emph{n} può essere usato per variabili che indicano una quantità.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+int nLines;
+int nPoints;
+\end{RightCode}
+\end{minipage}
+
+Il suffisso \emph{No} può essere usato per variabili che indicano il numero di un particolare oggetto.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+int linesNo;
+int pointsNo;
+\end{RightCode}
+\end{minipage}
+
+Il termine \emph{compute} deve essere usato dove qualcosa viene effettivamente calcolato.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+matrix->computeInverse ();
+\end{RightCode}
+\end{minipage} 
+
+Il termine \emph{find} deve essere usato dove qualcosa viene effettivamente cercato.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+vector->findMinElement ();
+\end{RightCode}
+\end{minipage} 
+
+Il termine \emph{initialize} deve essere usato quando viene inizializzato un oggetto o una procedura.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+interface.initializeUsersTree ();
+\end{RightCode}
+\end{minipage}
+
+Per ridurre la complessità di lettura del codice è buona norma dare nomi complementari a funzioni che eseguono operazioni complementari.
+Vengono di seguito riportati alcuni esempi:
+\begin{itemize}
+	\item \texttt{set}/\texttt{get},
+	\item \texttt{add}/\texttt{remove},
+	\item \texttt{create}/\texttt{destroy}, 
+	\item \texttt{start}/\texttt{stop},
+	\item \texttt{insert}/\texttt{delete},
+	\item \texttt{increment}/\texttt{decrement},
+	\item \texttt{old}/\texttt{new},
+	\item \texttt{begin}/\texttt{end},
+	\item \texttt{first}/\texttt{last},
+	\item \texttt{up}/\texttt{down},
+	\item \texttt{min}/\texttt{max},
+	\item \texttt{next}/\texttt{previous},
+	\item \texttt{open}/\texttt{close},
+	\item \texttt{show}/\texttt{hide},
+	\item \texttt{suspend}/\texttt{resume},
+	\item etc\dots
+\end{itemize}
+
+Classi o strutture rappresentanti eccezioni devono avere il suffisso \emph{Exception}.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+class IOException
+{
+	...
+};
+\end{RightCode}
+\end{minipage}%
+
+\subsection{Moduli embedded}
+
+Un discorso leggermente diverso va fatto quando ci si accinge a scrivere firmware e si intende rendere modulare il codice e quindi creare un blocco per ogni periferica presente nella scheda e nel microcontrollore.
+Tutte le regole mostrate fino ad ora continuano a valere, ma con qualche piccolo accorgimento e modifica.
+
+Si prenda ad esempio la periferica seriale di un qualsiasi microcontrollore.
+All'interno dei file che descriveranno le funzioni da poter utilizzare sarà presente, ad esempio, la struttura \texttt{Serial} che verrà utilizzata per memorizzare i dati ed i parametri di una relativa seriale (il microcontrollore ne potrebbe avere più di una).
+Per fare in modo che non ci siano rischi di funzioni e variabili globali che si chiamino uguali all'interno di più moduli, ognuna di queste dovrà avere come prefisso il nome del modulo seguito dal carattere underscore.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+
+int Serial_maxBufferDimension = 10;
+
+void Serial_sendChar(char);
+char Serial_readChar();
+\end{RightCode}
+\end{minipage}
+
+Nella sezione~\ref{sec:firmware} verrà dettagliata meglio la modalità di scrittura di un modulo per la gestione delle periferiche di un microcontrollore.

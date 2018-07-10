@@ -1,0 +1,216 @@
+% OHILab C/C++ Coding Style
+% (C) 2012 - OHILab <info@ohilab.org>
+%
+% Author: 
+%	Marco Giammarini <m.giammarini@warcomeb.it>
+%	Vito Colagiacomo <vito.colagiacomo@gmail.com>
+%
+% svn:
+%	$Id: formatting.tex 140 2012-12-04 08:24:12Z warcomeb $
+
+\section{Formattazione}\label{sec:formatting}
+
+In questa sezione verranno illustrate le principali regole di formattazione che dovranno essere seguite per la stesura del codice.
+Ovviamente la guida non è esaustiva e non copre tutti i particolari casi.
+In caso di dubbi è bene affidarsi al buon senso basandosi sulle regole che verranno illustrate e solo nel caso nemmeno questo basti si possono chiedere chiarimenti al responsabile dell'\textbf{OHILab\#Dev} Team.
+
+La prima regola fondamentale da tenere in mente e che viene riportata da quasi tutte le guide di coding style\cite{codestyle:google,codestyle:geotechnical,codestyle:quantum} è che ogni riga di codice \emph{non} deve superare le 80 colonne.
+
+\subsection{Spazi e tabulazioni}
+
+Per indentare il codice è permesso il solo uso degli spazi, in particolare l'indentazione è di due spazi.
+L'uso del carattere di tabulazione è assolutamente vietato.
+Il motivo di tale scelta risiede nel fatto che si vuole evitare problemi di codifica tra diversi IDE e diversi sistemi operativi.
+Inoltre gli spazi non hanno interpretazioni diverse, in temini di spazio occupato, in base alle impostazioni dell'IDE, cosa che invece succede per la tabulazione.
+Ogni IDE permette di configurare la generazione del numero di caratteri richiesti quando viene premuto il tasto \emph{TAB}.
+
+\subsection{Classi, strutture ed enum}
+
+% TODO: da fare!!!
+
+\subsection{Dichiarazione e definizione di funzioni}
+
+La dichiarazione e la definizione di una funziona deve essere possibilmente fatta in un'unica riga.
+Nella definizione il tipo di dato di ritorno va posizionato su una riga e il nome della funzione e i suoi parametri all'inizio della riga successiva.
+Questo aiuta gli altri sviluppatori a trovare dove comincia una nuova funzione.
+
+Le parentesi graffe che contengono l'implementazione della funzione devono essere posizionate nella prima colonna di una nuova riga di codice.
+Infatti molti tool utili a indicizzare le funzioni presenti in un file cercano proprio nella prima colonna la parentesi graffa di apertura per localizzare la loro implementazione.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+ReturnType
+functionName (Type1 argument1, Type2 argument2)
+{
+  ...
+}
+\end{RightCode}
+\end{minipage}%
+
+Nel caso in cui gli argomenti della funzione siano piuttosto numerosi, suddividerli su più righe, ma mantenendo il limite del numero di colonne.
+Quando parte dei parametri vengono messi su di una nuova linea e bene che siano allineati con quelli della riga sopra.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+ReturnType
+longFunctionName (Type1 argument1, Type2 argument2,
+                  Type3 argument3)
+{
+  ...
+}
+
+ReturnType
+otherLongFunctionName (Type1 argument1,
+                       Type2 argument2,
+                       Type3 argument3)
+{
+  ...
+}
+\end{RightCode}
+\end{minipage}%
+
+Inoltre è bene tenere a mente alcune regole:
+\begin{itemize}
+	\item come già detto, le parentesi graffe aperte e chiuse vanno messe da sole nella prima colonna;
+	\item uno spazio va inserito tra il nome della funzione e la parentesi tonda aperta;
+	\item il nome dei parametri va indicato sia nella dichiarazione che nella definizione;
+	\item se la funzione è \texttt{const}, la relativa keyword va inserita sulla stessa riga dell'ultimo parametro dopo la parentesi tonda;
+	\item non ci sono spazi tra le parentesi tonde e i parametri.
+\end{itemize}
+
+\subsection{Chiamata di funzioni}
+
+Come per la definizione e la dichiarazione di una funzione, anche la chiamata della funzione va posizionata, compatibilmente con la sua lunghezza, su di un'unica riga.
+Nel caso non fosse possibile, le regole da seguire sono le stesse usate per la definizione.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+value = functionName(argument1, argument2);
+
+valueLong = longFunctionName(argument1, argument2, argument3,
+                             longArgumentName);
+
+valueLongLong = VeryLongFunctionName(argument1,
+                                     argument2,
+                                     argument3,
+                                     longArgumentName);
+\end{RightCode}
+\end{minipage}%
+
+Si noti come in questo caso non sia presente lo spazio tra il nome della funzione e la parentesi tonda aperta.
+
+\subsection{Costrutto \texttt{if}}
+
+Il costrutto \texttt{if} segue le stesse regole della definizione delle funzioni e deve avere la seguente forma.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+if (condition)
+{
+  ...
+}
+else
+{
+  ...
+}
+\end{RightCode}
+\end{minipage}%
+
+Si noti lo spazio presente tra il nome del costrutto e la parentesi tonda contenente la condizione.
+È possibile scrivere l'istruzione condizionale, nel caso sia di breve lunghezza, sulla stessa riga del costrutto nel caso in cui noi sia presente anche l'\texttt{else}.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+if (x == kFoo) doThis();
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+if (x) doThis();
+else doThat();
+\end{ErrorCode}
+\end{minipage}
+
+Nel caso di istruzioni condizionali formate da una singola riga, non è necessario inserire le parentesi graffe.
+Nel caso in cui una parte del costrutto \texttt{if-else} le usi, allora anche l'altro deve utilizzarle.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+if (condition)
+{
+  foo;
+}
+else
+{
+  bar;
+}
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+if (condition)
+{
+  foo;
+}
+else
+  bar;
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Costrutti \texttt{for} e \texttt{while}}
+
+I costrutti \texttt{for} e \texttt{while} seguono la stessa sintassi indicata per il costrutto \texttt{if}.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+for (initialization; condition; update)
+{
+  statement;
+}
+
+while (condition)
+{
+  statement;
+}
+\end{RightCode}
+\end{minipage}%
+
+Una particolarità a cui bisogna prestare attenzione sono i cicli con corpi vuoti.
+Questa tipologia di ciclo deve sempre prevedere le parentesi o l'istruzione \texttt{continue}.
+
+\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+while (condition) {}
+while (condition) continue;
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+while (condition) ;
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Costrutto \texttt{switch}}
+
+Il costrutto \texttt{switch} viene scritto in molti modi e tipologie diverse.
+In questa guida si tiene in considerazione che ogni \texttt{case} rappresenta una label e che quindi non va indentata.
+Il costrutto \texttt{switch} dovrebbe sempre prevedere il caso \texttt{default}.
+
+\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+switch (var)
+{
+case 0:   // 0 space indent
+  ...     // 2 space indent
+  break;
+case 1:
+  ...
+  break;
+default:
+  ...
+}
+\end{RightCode}
+\end{minipage}%
