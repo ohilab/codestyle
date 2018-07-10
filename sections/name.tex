@@ -1,22 +1,19 @@
-% OHILab C/C++ Coding Style
-% (C) 2012 - OHILab <info@ohilab.org>
+% OHILib C/C++ Coding Style
+% (C) 2012-2018 - OHILab <info@ohilab.org>
 %
 % Author: 
 %	Marco Giammarini <m.giammarini@warcomeb.it>
 %	Vito Colagiacomo <vito.colagiacomo@gmail.com>
-%
-% svn:
-%	$Id: name.tex 139 2012-12-03 08:05:19Z warcomeb $
 
-\section{Nomi}\label{sec:name}
+\section{Nomi nel Software}\label{sec:name}
 
 I nomi di variabili, funzioni, tipi di dato, file, etc. devono essere \emph{sempre} scelti in modo da fornire anche un'informazione riguardo il loro significato.
-È cattiva norma comune, infatti, usare abbreviazioni e codici strani per i nomi, con conseguente illeggibilità del codice da parte di altri sviluppatori e spesso anche dallo sviluppatore che lo ha scritto.
+È cattiva norma, infatti, usare abbreviazioni e codici strani per i nomi, con conseguente illeggibilità del codice da parte di altri sviluppatori e spesso anche dallo sviluppatore stesso che lo ha scritto.
 Per le variabili locali invece può essere scelto un nome più corto, poiché il loro utilizzo è limitato all'interno del loro \emph{scope}, dove in genere un commento descrive il loro utilizzo, ad ogni modo è bene cercare di limitare il numero di abbreviazioni. 
 
 La nomenclatura di tutti gli elementi all'interno del codice deve seguire la notazione \emph{Camel Case}\cite{codestyle:camel} con le varianti che verranno mostrate nei prossimi paragrafi.
 
-La lingua adottata è l'inglese.
+La lingua adottata è l'\emph{inglese}.
 
 \subsection{Abbreviazioni ed acronimi}\label{ssec:abbreviations}
 
@@ -38,7 +35,7 @@ bool sel;
 \end{ErrorCode}
 \end{minipage}
 
-Acronimi e abbreviazioni di uso comune devono essere usati ma non possono essere indicati interamente in maiuscolo, mentre non devono assolutamente essere usate le forme complete degli acronimi:
+Acronimi e abbreviazioni di uso comune devono essere usati ma non possono essere indicati interamente in maiuscolo, inoltre non devono assolutamente essere usate le forme complete degli acronimi:
 
 \begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
@@ -58,14 +55,14 @@ getHypertextMarkupLanguage();
 
 Inoltre, generalmente è pratica comune utilizzare la stessa variabile locale (con nomi tipo \texttt{tmp}) per scopi differenti all'interno della stessa funzione.
 Anziché fare ciò, è meglio utilizzare variabili locali differenti per ogni scopo assegnadogli nomi significativi.
-Questo aiuta a comprendere meglio il programma, lasciando al compilatore il compito di ottimizzare il codice.
-Se poi si cerca di posizionare la dichiarazione della varibile locale all'interno dello \emph{scope} più piccolo che comprende il suo utilizzo rende il codice ulteriormente più chiaro.
+Questo aiuta a comprendere meglio il codice, lasciando al compilatore il compito di ottimizzare.
+Inoltre, se fosse possibile riuscire a posizionare la dichiarazione della varibile locale all'interno dello \emph{scope} più piccolo che comprende il suo utilizzo, questo renderebbe il codice ulteriormente più chiaro.
 
 \subsection{File}\label{ssec:filename}
 
-Per nomi dei file del progetto che contengono codice C/C++ è \emph{strettamente necessario} attenersi alle seguenti regole:
+Per i nomi dei file del progetto che contengono codice C/C++ è \emph{strettamente necessario} attenersi alle seguenti regole:
 \begin{itemize}
-	\item I nomi dei file devono essere scritti tutti in minuscolo e non possono contenere caratteri come lo spazio, l'underscore e il trattino.
+	\item I nomi dei file devono essere scritti tutti in minuscolo e non possono contenere caratteri come lo spazio o altri caratteri speciali.
 	\item I file header del progetto devono avere estensione \texttt{.h}.
 	\item I file sorgente del progetto devono avere estensione \texttt{.c} nel caso di codice C, \texttt{.cpp} nel caso di codice C++.
 	\item È bene che i nomi dei file siano, come per ogni nome all'interno del progetto, il più chiaro e specifico possibile.
@@ -146,6 +143,8 @@ Per quanto riguarda le variabili globali queste seguono le stesse regole delle v
 int a = ::myGlobalVariable;
 \end{RightCode}
 \end{minipage}
+
+È bene ricordare che le variabili globali \emph{non} dovrebbero mai essere usate!
 
 \subsubsection{Variabili contatore}
 
@@ -245,7 +244,7 @@ getNumIterations ()
 \subsection{Enumerators}\label{ssec:enumname}
 
 I valori degli \texttt{enum}, come già detto, seguono le regole delle costanti.
-Volendo, nell'ottica di aumentare la leggibilità del codice, è possibile aggiungere come prefisso ai nomi dei valori il nome del tipo:
+Un ulteriore regola da utilizzare per incrementare la leggibilità del codice prevede l'aggiunta come prefisso ai nomi dei valori il nome del tipo:
 
 \begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
@@ -292,7 +291,7 @@ bool isNoValid;
 \end{ErrorCode}
 \end{minipage}
 
-Allo stesso modo le funzioni che ritornano variabili boolean dovrebbero avere questo prefisso.
+Allo stesso modo le funzioni che ritornano variabili boolean dovrebbero avere questo stesso prefisso.
 Altre alternative sono i prefissi \emph{can}, \emph{has} e \emph{should}.
 
 \begin{minipage}[t]{\rbwidth}
@@ -346,7 +345,7 @@ int pointsNo;
 \end{RightCode}
 \end{minipage}
 
-Il termine \emph{compute} deve essere usato dove qualcosa viene effettivamente calcolato.
+Il verbo \emph{compute} deve essere usato dove qualcosa viene effettivamente calcolato.
 
 \begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
@@ -354,7 +353,7 @@ matrix->computeInverse ();
 \end{RightCode}
 \end{minipage} 
 
-Il termine \emph{find} deve essere usato dove qualcosa viene effettivamente cercato.
+Il verbo \emph{find} deve essere usato dove qualcosa viene effettivamente cercato.
 
 \begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
@@ -362,7 +361,7 @@ vector->findMinElement ();
 \end{RightCode}
 \end{minipage} 
 
-Il termine \emph{initialize} deve essere usato quando viene inizializzato un oggetto o una procedura.
+Il verbo \emph{initialize}, o in alternativa \emph{init}, deve essere usato quando viene inizializzato un oggetto o una procedura.
 
 \begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
@@ -401,24 +400,3 @@ class IOException
 };
 \end{RightCode}
 \end{minipage}%
-
-\subsection{Moduli embedded}
-
-Un discorso leggermente diverso va fatto quando ci si accinge a scrivere firmware e si intende rendere modulare il codice e quindi creare un blocco per ogni periferica presente nella scheda e nel microcontrollore.
-Tutte le regole mostrate fino ad ora continuano a valere, ma con qualche piccolo accorgimento e modifica.
-
-Si prenda ad esempio la periferica seriale di un qualsiasi microcontrollore.
-All'interno dei file che descriveranno le funzioni da poter utilizzare sarà presente, ad esempio, la struttura \texttt{Serial} che verrà utilizzata per memorizzare i dati ed i parametri di una relativa seriale (il microcontrollore ne potrebbe avere più di una).
-Per fare in modo che non ci siano rischi di funzioni e variabili globali che si chiamino uguali all'interno di più moduli, ognuna di queste dovrà avere come prefisso il nome del modulo seguito dal carattere underscore.
-
-\begin{minipage}[t]{\rbwidth}
-\begin{RightCode}
-
-int Serial_maxBufferDimension = 10;
-
-void Serial_sendChar(char);
-char Serial_readChar();
-\end{RightCode}
-\end{minipage}
-
-Nella sezione~\ref{sec:firmware} verrà dettagliata meglio la modalità di scrittura di un modulo per la gestione delle periferiche di un microcontrollore.
