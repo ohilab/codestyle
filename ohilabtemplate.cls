@@ -151,27 +151,27 @@
 	\chead[%
         \ifohi@procedure
             \ifohi@english
-                \begin{tabularx}{\columnwidth}{|p{2cm}|X|p{1.7 cm}p{1.9 cm}|}
+                \begin{tabularx}{\columnwidth}{|p{3cm}|X|p{1.2cm}p{1.7cm}|}
                 \hline
-                \multirow{4}{*}{\includegraphics[width=2cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\scriptsize{Project Code:}} & {\scriptsize{\ohi@docprojectcode}} \\
+                \multirow{4}{*}{\includegraphics[width=3cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\tiny{Prj Code:}} & {\tiny{\ohi@docprojectcode}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Doc Number:}} & {\scriptsize{\ohi@doccode}} \\
+                & {} & {\scriptsize{Doc Nr:}} & {\tiny{\ohi@doccode}} \\
                 \cline{3-4}
-                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\scriptsize{Revision:}} & {\scriptsize{\ohi@docrevision\ -~\ohi@docdata}} \\
+                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\tiny{Revision:}} & {\tiny{\ohi@docrevision\ -~\ohi@docdata}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Page:}} & {\scriptsize{\thepage\ of \pageref{LastPage}}} \\
+                & {} & {\tiny{Page:}} & {\tiny{\thepage\ of \pageref{LastPage}}} \\
                 \hline
                 \end{tabularx}
             \else
-                \begin{tabularx}{\columnwidth}{|p{2cm}|X|p{1.7 cm}p{1.9 cm}|}
+                \begin{tabularx}{\columnwidth}{|p{3cm}|X|p{1.2cm}p{1.7cm}|}
                 \hline
-                \multirow{4}{*}{\includegraphics[width=2cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\scriptsize{Project Code:}} & {\scriptsize{\ohi@docprojectcode}} \\
+                \multirow{4}{*}{\includegraphics[width=3cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\tiny{Prj Code:}} & {\tiny{\ohi@docprojectcode}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Doc Number:}} & {\scriptsize{\ohi@doccode}} \\
+                & {} & {\tiny{Doc Nr:}} & {\tiny{\ohi@doccode}} \\
                 \cline{3-4}
-                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\scriptsize{Revisione:}} & {\scriptsize{\ohi@docrevision\ -~\ohi@docdata}} \\
+                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\tiny{Revisione:}} & {\tiny{\ohi@docrevision\ -~\ohi@docdata}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Page:}} & {\scriptsize{\thepage\ di \pageref{LastPage}}} \\
+                & {} & {\tiny{Page:}} & {\tiny{\thepage\ di \pageref{LastPage}}} \\
                 \hline
                 \end{tabularx}
             \fi
@@ -179,27 +179,27 @@
 	]{%
         \ifohi@procedure
             \ifohi@english
-                \begin{tabularx}{\columnwidth}{|p{2cm}|X|p{1.7 cm}p{1.9 cm}|}
+                \begin{tabularx}{\columnwidth}{|p{3cm}|X|p{1.2cm}p{1.7cm}|}
                 \hline
-                \multirow{4}{*}{\includegraphics[width=2cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\scriptsize{Project Code:}} & {\scriptsize{\ohi@docprojectcode}} \\
+                \multirow{4}{*}{\includegraphics[width=3cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\tiny{Prj Code:}} & {\tiny{\ohi@docprojectcode}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Doc Number:}} & {\scriptsize{\ohi@doccode}} \\
+                & {} & {\scriptsize{Doc Nr:}} & {\tiny{\ohi@doccode}} \\
                 \cline{3-4}
-                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\scriptsize{Revision:}} & {\scriptsize{\ohi@docrevision\ -~\ohi@docdata}} \\
+                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\tiny{Revision:}} & {\tiny{\ohi@docrevision\ -~\ohi@docdata}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Page:}} & {\scriptsize{\thepage\ of \pageref{LastPage}}} \\
+                & {} & {\tiny{Page:}} & {\tiny{\thepage\ of \pageref{LastPage}}} \\
                 \hline
                 \end{tabularx}
             \else
-                \begin{tabularx}{\columnwidth}{|p{2cm}|X|p{1.7 cm}p{1.9 cm}|}
+                \begin{tabularx}{\columnwidth}{|p{3cm}|X|p{1.2cm}p{1.7cm}|}
                 \hline
-                \multirow{4}{*}{\includegraphics[width=2cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\scriptsize{Project Code:}} & {\scriptsize{\ohi@docprojectcode}} \\
+                \multirow{4}{*}{\includegraphics[width=3cm]{images/logo}} & \multirow{2}{*}{\centering{\small\ohi@doctitle}} & {\tiny{Prj Code:}} & {\tiny{\ohi@docprojectcode}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Doc Number:}} & {\scriptsize{\ohi@doccode}} \\
+                & {} & {\tiny{Doc Nr:}} & {\tiny{\ohi@doccode}} \\
                 \cline{3-4}
-                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\scriptsize{Revisione:}} & {\scriptsize{\ohi@docrevision\ -~\ohi@docdata}} \\
+                & \multirow{2}{*}{\centering{\small\ohi@docsubject}} & {\tiny{Revisione:}} & {\tiny{\ohi@docrevision\ -~\ohi@docdata}} \\
                 \cline{3-4}
-                & {} & {\scriptsize{Page:}} & {\scriptsize{\thepage\ di \pageref{LastPage}}} \\
+                & {} & {\tiny{Page:}} & {\tiny{\thepage\ di \pageref{LastPage}}} \\
                 \hline
                 \end{tabularx}
             \fi
