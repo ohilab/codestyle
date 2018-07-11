@@ -22,11 +22,7 @@ Il motivo di tale scelta risiede nel fatto che si vuole evitare problemi di codi
 Inoltre gli spazi non hanno interpretazioni diverse, in temini di spazio occupato, in base alle impostazioni dell'IDE, cosa che invece succede per la tabulazione.
 Ogni IDE permette di configurare la generazione del numero di caratteri richiesti quando viene premuto il tasto \emph{TAB}.
 
-\subsection{Classi, strutture ed enum}
-
-% TODO: da fare!!!
-
-\subsection{Dichiarazione e definizione di funzioni}
+\subsection{Dichiarazione e definizione di funzioni}\label{ssec:formattingfunction}
 
 La dichiarazione e la definizione di una funziona deve essere possibilmente fatta in un'unica riga.
 Nella definizione il tipo di dato di ritorno va posizionato su una riga e il nome della funzione e i suoi parametri all'inizio della riga successiva.
@@ -35,7 +31,7 @@ Questo aiuta gli altri sviluppatori a trovare dove comincia una nuova funzione.
 Le parentesi graffe che contengono l'implementazione della funzione devono essere posizionate nella prima colonna di una nuova riga di codice.
 Infatti molti tool utili a indicizzare le funzioni presenti in un file cercano proprio nella prima colonna la parentesi graffa di apertura per localizzare la loro implementazione.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 ReturnType
 functionName (Type1 argument1, Type2 argument2)
@@ -48,7 +44,7 @@ functionName (Type1 argument1, Type2 argument2)
 Nel caso in cui gli argomenti della funzione siano piuttosto numerosi, i parametri possono essere suddivisi su più righe, mantenendo comunque valido il limite del numero di colonne.
 Quando parte dei parametri vengono messi su di una nuova linea e bene che siano allineati con quelli della riga sopra.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 ReturnType
 longFunctionName (Type1 argument1, Type2 argument2,
@@ -81,7 +77,7 @@ Inoltre è bene tenere a mente alcune regole:
 Come per la definizione e la dichiarazione di una funzione, anche la chiamata della funzione va posizionata, compatibilmente con la sua lunghezza, su di un'unica riga.
 Nel caso non fosse possibile, le regole da seguire sono le stesse usate per la definizione.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 value = functionName(argument1, argument2);
 
@@ -97,11 +93,15 @@ valueLongLong = VeryLongFunctionName(argument1,
 
 Si noti come in questo caso non sia presente lo spazio tra il nome della funzione e la parentesi tonda aperta.
 
+\subsection{Classi, strutture ed enum}
+
+Le classi, le strutture e gli enum seguono le stesse regole presentate nel paragrafo~\ref{ssec:formattingfunction} in merito alla dichiarazione delle funzioni.
+
 \subsection{Costrutto \texttt{if}}
 
 Il costrutto \texttt{if} segue le stesse regole della definizione delle funzioni e deve avere la seguente forma.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 if (condition)
 {
@@ -117,7 +117,7 @@ else
 Si noti lo spazio presente tra il nome del costrutto e la parentesi tonda contenente la condizione.
 È possibile scrivere l'istruzione condizionale, nel caso sia di breve lunghezza, sulla stessa riga del costrutto nel caso in cui noi sia presente anche l'\texttt{else}.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 if (x == kFoo) doThis();
 \end{RightCode}
@@ -133,7 +133,7 @@ else doThat();
 Nel caso di istruzioni condizionali formate da una singola riga, non è necessario inserire le parentesi graffe.
 Nel caso in cui una parte del costrutto \texttt{if-else} le usi, allora anche l'altro deve utilizzarle, anche se solo per una riga.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 if (condition)
 {
@@ -161,7 +161,7 @@ else
 
 I costrutti \texttt{for} e \texttt{while} seguono la stessa sintassi indicata per il costrutto \texttt{if}.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 for (initialization; condition; update)
 {
@@ -178,7 +178,7 @@ while (condition)
 Una particolarità a cui bisogna prestare attenzione sono i cicli con corpi vuoti.
 Questa tipologia di ciclo deve sempre prevedere le parentesi o l'istruzione \texttt{continue}.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 while (condition) {}
 while (condition) continue;
@@ -197,7 +197,7 @@ Il costrutto \texttt{switch} viene scritto in molti modi e tipologie diverse.
 In questa guida si tiene in considerazione che ogni \texttt{case} rappresenta una label e che quindi non va indentata.
 Il costrutto \texttt{switch} dovrebbe sempre prevedere il caso \texttt{default}.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 switch (var)
 {
