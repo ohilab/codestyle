@@ -1,10 +1,116 @@
 % OHILab C/C++ Coding Style
-% (C) 2012 - OHILab <info@ohilab.org>
+% (C) 2012-2018 - OHILab <info@ohilab.org>
 %
 % Author: 
 %	Marco Giammarini <m.giammarini@warcomeb.it>
-%
-% svn:
-%	$Id: embedded.tex 138 2012-11-30 08:46:26Z warcomeb $
 
-\section{Firmware}\label{sec:firmware}
+\section{Nomi nel Firmware}\label{sec:firmware}
+
+Un discorso leggermente diverso va fatto quando ci si accinge a scrivere firmware e si intende rendere modulare il codice e quindi creare un blocco per ogni periferica presente nella scheda e nel microcontrollore.
+Il principio di base è che il fimrware deve essere scritto in maniera modulare provando a pensare il firmware come fosse un'applicazione scritta con un linguaggio orientato agli oggetti.
+Fondamentalmente, ogni tipo di periferica del microcontrollore è come se fosse una classe, ed ogni periferica presente al suo interno è come se fosse un'istanza della relativa classe.
+Lo stesso discorso deve valere per ogni componente (intelligente ovviamente) presente sulla scheda elettronica.
+
+Ricapitolando, tutte le regole mostrate fino ad ora continuano a valere, ma con qualche piccolo accorgimento e modifica che verranno mostrate di seguito.
+Dove non indicato, valgono le regole presentate nella sezione~\ref{sec:name}.
+Tutti gli esempi che verranno mostrati prendono ad esempio la periferica seriale di un qualsiasi microcontrollore, il cui modulo verrà chiamato a titolo di esempio \texttt{Serial}.
+
+\subsection{Tipi di dato}\label{ssec:etypename}
+
+I nomi dei tipi di dato (strutture, typedef ed enum) devono iniziare con la prima lettera maiuscola, ed hanno una lettera maiuscola per ogni nuova parola\cite{codestyle:camel}.
+Nel caso ci si trovi all'interno di un modulo, il nome di quest'ultimo deve precedere sempre il nome del tipo di dato e diviso da questo mediante l'underscore.
+Il nome del tipo di dato deve comunque iniziare con la lettera maiuscola.
+
+\noindent\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+struct Serial_Device { ... };
+enum Serial_StartBit { ... };
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+struct Serial_device { ... };
+struct SerialDevice { ... };
+enum Serial_start_bit { ... };
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Variabili}\label{ssec:evariable}
+
+\subsubsection{Variabili ordinarie e membro di strutture}\label{sssec:evarnorm}
+
+Per distinguere il nome delle variabili da quello dei tipi di dato, nelle variabili la prima lettera deve essere minuscola.
+
+\subsubsection{Variabili globali}
+
+Per quanto riguarda le variabili globali queste seguono le stesse regole delle variabili ordinarie.
+Anche le variabili globali, come i tipi di dati, se definite all'interno di un modulo devono avere come prefisso il nome del modulo seguito da un underscore.
+Se la variabile è locale al modulo (definita nel file .c, esterna a tutte le funzioni) questa deve assolutamente essere definita \texttt{static}, in modo tale da renderla invisibile agli altri moduli.
+
+\noindent\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+static uint8_t Serial_rxBufferHead = 0;
+\end{RightCode}
+\end{minipage}
+
+\subsection{Funzioni}
+
+Come per le variabili, anche le funzioni devono seguire la notazione \emph{Camel Case}, iniziando con la lettera minuscola\cite{codestyle:geotechnical}.
+Il nome della funzione anche in questo caso va preceduta dal nome del modulo e da un underscore.
+L'uso dell'underscore non è consentito in nessun altro caso.
+
+\noindent\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+Serial_setBaudrate(uint32_t baud);
+Serial_getBaudrate();
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+Serial_set_baudrate(uint32_t baud);
+Serial_GetBaudrate();
+\end{ErrorCode}
+\end{minipage}
+
+Come per le variabili, anche per le funzioni, se queste sono private e relative solo al modulo è bene che vengano definite \texttt{static}, in modo tale che non siano utilizzabili da nessun altro modulo.
+
+\subsection{Costanti e Macro}\label{ssec:econstantname}
+
+I nomi delle costanti e delle macro, anche in questo caso, devono essere scritte interamente con lettere maiuscole e con le parole separate da un underscore\cite{codestyle:geotechnical}.
+Questa regola è valida anche per i valori degli \texttt{enum}.
+Nel caso in cui queste costanti siano definite all'interno del modulo, i nomi vanno preceduti dal nome del modulo scritto tutto in maiuscolo e separato dal resto del nome con un underscore.
+
+\noindent\begin{minipage}[t]{\cbwidth}
+\begin{RightCode}
+const int SERIAL_MAX_DIMENSION = 10;
+
+#define SERIAL_NUM_ITERATIONS  = 2
+\end{RightCode}
+\end{minipage}%
+\hspace{\cbdistance}
+\begin{minipage}[t]{\cbwidth}
+\begin{ErrorCode}
+const int Serial_maxDimension = 10;
+
+#define SERIAL_NUMITERATIONS  = 2
+\end{ErrorCode}
+\end{minipage}
+
+\subsection{Enumerators}\label{ssec:aenumname}
+
+I valori degli \texttt{enum}, come già detto, seguono le regole delle costanti e delle macro.
+Un'ulteriore regola da utilizzare per incrementare la leggibilità del codice prevede l'aggiunta come prefisso ai nomi dei valori sia il nome del modulo e sia il nome del tipo separati da un'underscore.
+Nel caso il tipo sia composto da più parole, queste vanno messe tutte in maiuscolo e \emph{non} divise dall'underscore.
+
+\noindent\begin{minipage}[t]{\rbwidth}
+\begin{RightCode}
+enum Serial_InterruptType
+{
+    SERIAL_INTERRUPTTYPE_NONE,
+    SERIAL_INTERRUPTTYPE_RX,
+    SERIAL_INTERRUPTTYPE_TX,
+};
+\end{RightCode}
+\end{minipage}
