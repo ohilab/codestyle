@@ -19,7 +19,7 @@ La lingua adottata è l'\emph{inglese}.
 
 Come già detto in precedenza, è bene evitare di utilizzare nomi ambigui ed abbreviazioni di difficile comprensione:
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 int numElements;
 int errorCount;
@@ -37,7 +37,7 @@ bool sel;
 
 Acronimi e abbreviazioni di uso comune devono essere usati ma non possono essere indicati interamente in maiuscolo, inoltre non devono assolutamente essere usate le forme complete degli acronimi:
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 getJsonResponse();
 setPwmDutyCicle();
@@ -75,7 +75,7 @@ Per i nomi dei file del progetto che contengono codice C/C++ è \emph{strettamen
 
 I nomi dei tipi di dato (classi, strutture, typedef ed enum) devono iniziare con la prima lettera maiuscola, ed hanno una lettera maiuscola per ogni nuova parola\cite{codestyle:camel}.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 class SerialBus { ... };
 enum SerialResponse { ... };
@@ -97,7 +97,7 @@ Per distinguere il nome delle variabili da quello dei tipi di dato, nelle variab
 Anche in questo caso il carattere underscore non deve essere mai utilizzato per separare le parole.
 Inoltre, è buona norma utilizzare forme plurali nei nomi di variabili che rappresentano collezioni di oggetti.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 int numElements;
 int errorsCount;
@@ -119,7 +119,7 @@ I nomi delle variabili membro di una classe seguono la stessa convenzione defini
 Questo per differenziare, all'interno delle funzioni membro della classe, la gestione della variabile membro con quelle passate come parametro alla funzione stessa.
 %È vietato anteporre l'underscore al nome della variabile poiché é una convenzione spesso usata per nomi di parole chiave (i.e.: \texttt{\_\_declspec}).  
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 string mName;
 int mBirthdayYear;
@@ -138,7 +138,7 @@ int _birthdayYear;
 Per quanto riguarda le variabili globali queste seguono le stesse regole delle variabili ordinarie (paragrafo~\ref{sssec:varnorm}).
 È buona norma inoltre riferirsi a queste variabili usando l'operatore di scope globale <<::>>\cite{codestyle:geotechnical}.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 int a = ::myGlobalVariable;
 \end{RightCode}
@@ -156,7 +156,7 @@ Come per le variabili, anche le funzioni devono seguire la notazione \emph{Camel
 È buona norma che il nome di una funzione rappresenti un'azione e che quindi contenga il \emph{verbo} che la descrive.
 Anche per il nome delle funzioni non è consentito l'uso dell'underscore.    
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 addTableEntry()
 deleteUrl()
@@ -172,7 +172,7 @@ delete_url()
 
 I nomi delle funzioni utilizzate per accedere e modificare direttamente variabili membro di una classe devono iniziare rispettivamente con \texttt{get} e \texttt{set}, seguiti dal nome della variabile.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 employee.getName();
 employee.setName(name);
@@ -181,7 +181,7 @@ employee.setName(name);
 
 Una regola da ricordare nel dare nomi alle funzioni è che il nome dell'oggetto è implicito e quindi non deve essere ripetuto all'interno del nome della funzione.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 line.getLength();
 \end{RightCode}
@@ -197,7 +197,7 @@ line.getLineLength();
 
 I nomi dei namespace devono essere composti solo da lettere minuscole e senza underscore tra le parole\cite{codestyle:geotechnical}.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 device::serialport
 \end{RightCode}
@@ -214,7 +214,7 @@ device::serial_port
 I nomi delle costanti, contrariamente alle altre variabili, devono essere scritte interamente con lettere maiuscole e con le parole separate da un underscore\cite{codestyle:geotechnical}.
 Questa regola è valida anche per i valori degli \texttt{enum}.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 const int MAX_DIMENSION = 10;
 const int NUM_ITERATIONS = 2;
@@ -231,7 +231,7 @@ const int NUMITERATIONS = 2;
 Per aumentare la coerenza e la leggibilità del codice, potrebbe essere considerata una buona norma la definizione di una funzione al posto di una costante\cite{codestyle:geotechnical}.
 Questa soluzione \emph{non} deve essere usata in ambito embedded.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 int
 getNumIterations ()
@@ -246,7 +246,7 @@ getNumIterations ()
 I valori degli \texttt{enum}, come già detto, seguono le regole delle costanti.
 Un ulteriore regola da utilizzare per incrementare la leggibilità del codice prevede l'aggiunta come prefisso ai nomi dei valori il nome del tipo:
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 enum Color
 {
@@ -265,7 +265,7 @@ Le macro seguono le stesse regole indicate precedentemente per le variabili cost
 
 I nomi rappresentanti template devono essere composti da una sola lettera maiuscola.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 template<class T> ...
 template<class C, class D> ...
@@ -279,7 +279,7 @@ Si consiglia di seguire molto attentamente quanto riportato.% ed in particolari 
 
 Il prefisso \emph{is} deve essere usato come prefisso per le variabili boolean, mentre non è consentito negare il nome della variabile.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 bool isValid;
 \end{RightCode}
@@ -294,7 +294,7 @@ bool isNoValid;
 Allo stesso modo le funzioni che ritornano variabili boolean dovrebbero avere questo stesso prefisso.
 Altre alternative sono i prefissi \emph{can}, \emph{has} e \emph{should}.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 bool hasLicense ();
 bool isUpdated ();
@@ -303,7 +303,7 @@ bool isUpdated ();
 
 Una buona norma per ridurre la complessità e diminuire il numero di nomi delle variabili consiste nel dare a variabili generiche lo stesso nome del tipo di dato.
 
-\begin{minipage}[t]{\cbwidth}
+\noindent\begin{minipage}[t]{\cbwidth}
 \begin{RightCode}
 setTopic (Topic* topic);
 connect (Database* database);
@@ -319,7 +319,7 @@ connect (Database* db);
 
 Variabili che invece hanno un ruolo e che quindi non sono generiche devono avere nomi significativi.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 Point startingPoint, centerPoint;
 Name loginName;
@@ -329,7 +329,7 @@ Name loginName;
 
 Il prefisso \emph{n} può essere usato per variabili che indicano una quantità.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 int nLines;
 int nPoints;
@@ -338,7 +338,7 @@ int nPoints;
 
 Il suffisso \emph{No} può essere usato per variabili che indicano il numero di un particolare oggetto.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 int linesNo;
 int pointsNo;
@@ -347,7 +347,7 @@ int pointsNo;
 
 Il verbo \emph{compute} deve essere usato dove qualcosa viene effettivamente calcolato.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 matrix->computeInverse ();
 \end{RightCode}
@@ -355,7 +355,7 @@ matrix->computeInverse ();
 
 Il verbo \emph{find} deve essere usato dove qualcosa viene effettivamente cercato.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 vector->findMinElement ();
 \end{RightCode}
@@ -363,7 +363,7 @@ vector->findMinElement ();
 
 Il verbo \emph{initialize}, o in alternativa \emph{init}, deve essere usato quando viene inizializzato un oggetto o una procedura.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 interface.initializeUsersTree ();
 \end{RightCode}
@@ -392,7 +392,7 @@ Vengono di seguito riportati alcuni esempi:
 
 Classi o strutture rappresentanti eccezioni devono avere il suffisso \emph{Exception}.
 
-\begin{minipage}[t]{\rbwidth}
+\noindent\begin{minipage}[t]{\rbwidth}
 \begin{RightCode}
 class IOException
 {
