@@ -1,37 +1,39 @@
 % OHILab C/C++ Coding Style
-% (C) 2012 - OHILab <info@ohilab.org>
+% (C) 2012-2018 - OHILab <info@ohilab.org>
 %
 % Author: 
 %	Marco Giammarini <m.giammarini@warcomeb.it>
-%
-% svn:
-%	$Id: comments.tex 140 2012-12-04 08:24:12Z warcomeb $
 
 \section{Commenti}\label{sec:comments}
 
-\begin{minipage}[t]{\rbwidth}
-\begin{RightSmallCode}
-/******************************************************************************
- * Copyright (C) 2012-2013 A. C. Open Hardware Ideas Lab
- *
- * Author:
- *   Name Surname <email@domain.com>
- *
- * Project: @project_name@
- * Package: ...
- * Version: @project_version@
- *
- * TODO: LICENZA
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
- * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
- * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *****************************************************************************/
-\end{RightSmallCode}
-\end{minipage}%
+In questa sezione viene affrontata una delle parti più importanti, e forse più critica, della programmazione: la documentazione del codice.
+La documentazione è fondamentale per permettere ad altri sviluppatori di poter interagire, modificare o ampliare il codice senza doverne analizzare ogni singola riga per capirne il funzionamento. 
+Inoltre documentare il codice permette anche, nel caso si documenti un'applicazione, di avere pronto un buon manuale d'uso.
+L'\sigla ha scelto Doxygen\cite{codestyle:doxygen} come strumento per la generazione della documentazione di librerie e applicazioni.
+
+% \begin{minipage}[t]{\rbwidth}
+% \begin{RightSmallCode}
+% /******************************************************************************
+%  * Copyright (C) 2012-2013 A. C. Open Hardware Ideas Lab
+%  *
+%  * Author:
+%  *   Name Surname <email@domain.com>
+%  *
+%  * Project: @project_name@
+%  * Package: ...
+%  * Version: @project_version@
+%  *
+%  * TODO: LICENZA
+%  *
+%  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+%  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+%  * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+%  * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+%  * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+%  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+%  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%  * SOFTWARE.
+%  *
+%  *****************************************************************************/
+% \end{RightSmallCode}
+% \end{minipage}%
